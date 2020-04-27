@@ -25,16 +25,24 @@ header h1 {
 
 aside {
     float: left;
+    height: 80vh;
     width: 20%;
     background-color: red;
     padding: 16px;
     border-right: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#difficulty {
+    text-transform: uppercase;
 }
 
 #game-field {
     float:left;
     width: 80%;
-    background-color: blue;
+    background-color: #99ff33;
 }
 
 #game-field ul {
@@ -47,4 +55,24 @@ aside {
     border: 2px solid black;
     padding: 16px;
     text-align: center;
+    font-size: 35px;
+}
+
+#sidebar-stats {
+    text-align: center;
+    margin: 16px;
+    background-color: darkgrey;
+    border: 4px solid grey;
+}
+
+.fa-bomb {
+    color: red;
+}
+
+.fa-exclamation {
+    color: yellow;
+}
+
+.fa-fan {
+    color: magenta;
 }

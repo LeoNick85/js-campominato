@@ -33,6 +33,19 @@ function mineGenerator(num_mine, num_max) {
     return final_array;
 }
 
+//Funzione per verificare se un numero è immediatamente successivo o precedente a quelli di un array
+function isNextTo(number, confront) {
+    var is_next = false;
+
+    for (i = 0; i < confront.length && is_next == false; i++) {
+        if ((confront[i] + 1) == number || (confront[i] - 1) == number) {
+            is_next = true;
+        }
+    }
+
+    return is_next;
+}
+
 //Chiedo all'utente il suo nome e con che livello di difficoltà vuole giocare
 var user_name = prompt("Benvenuto a Prato Minato. Come ti chiami?")
 
@@ -47,6 +60,8 @@ do {
 
 } while (difficulty_level != "facile" && difficulty_level != "medio" && difficulty_level != "difficile")
 
+document.getElementById('user-name').insertAdjacentHTML("beforeEnd", user_name);
+document.getElementById('difficulty').insertAdjacentHTML("beforeEnd", difficulty_level);
 console.log(user_name, difficulty_level);
 //In base alla difficoltà stabilisco il numero totale di caselle
 if (difficulty_level == "facile") {
@@ -60,7 +75,7 @@ console.log(total_number);
 
 //Genero campo minato di conseguente ampiezza, con 16 mine (16 numeri casuali diversi tra loro)
 for (i = 1; i <= total_number; i++) {
-    document.getElementById('field').insertAdjacentHTML("beforeEnd","<li id=\"mine" + i + "\"><p>?</p></li>" )
+    document.getElementById('field').insertAdjacentHTML("beforeEnd","<li id=\"mine" + i + "\"><p><i class=\"far fa-question-circle\"></i></p></li>");
 }
 
 var mines = mineGenerator(16, total_number);
@@ -85,13 +100,21 @@ do {
 
     if (mines.includes(guess)) {
         alert("Hai trovato una mina! Hai perso");
-        document.getElementById("mine" + guess).innerHTML = "BOOM!";
+        document.getElementById("mine" + guess).innerHTML = "<i class=\"fas fa-bomb\"></i>";
         finish_check = true;
     } else {
-        alert("Hai trovato un fiore. Continua!");
-        document.getElementById("mine" + guess).innerHTML = "Fiore";
+        if (isNextTo(guess, mines)) {
+            alert("Hai trovato un fiore, ma è adiacente a una mina. Continua!");
+            document.getElementById("mine" + guess).innerHTML = "<i class=\"fas fa-exclamation\"> </i><i class=\"fas fa-fan\"> </i><i class=\"fas fa-exclamation\"></i>";
+        } else {
+            alert("Hai trovato un fiore. Continua!");
+            document.getElementById("mine" + guess).innerHTML = "<i class=\"fas fa-fan\"></i>";
+        }
     }
 } while (finish_check == false && guess_check.length < (total_number - 16))
+
+document.getElementById("score").innerHTML = guess_check.length;
+document.getElementById("total").innerHTML = total_number - 16;
 
 console.log(guess_check, guess_check.length);
 
