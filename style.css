@@ -1,0 +1,50 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+header {
+    padding: 30px;
+    background-color: green;
+    border-bottom: 4px solid darkgreen;
+    text-align: center;
+}
+
+header h1 {
+    text-transform: uppercase;
+    text-decoration: overline underline;
+    font-size: 40px;
+}
+
+#game-wrapper::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+aside {
+    float: left;
+    width: 20%;
+    background-color: red;
+    padding: 16px;
+    border-right: 3px solid black;
+}
+
+#game-field {
+    float:left;
+    width: 80%;
+    background-color: blue;
+}
+
+#game-field ul {
+    list-style-type: none;
+}
+
+#game-field li {
+    float: left;
+    width: 10%;
+    border: 2px solid black;
+    padding: 16px;
+    text-align: center;
+}
