@@ -92,7 +92,7 @@ do {
         if (isNaN(guess) || guess < 1 || guess > total_number) {
             alert("Non hai inserito un numero valido")
         } else if (guess_check.includes(guess)) {
-            alert("Hai già tentato questo numero! Riprova")
+            alert("Hai già tentato questo numero! Riprova");
         }
     } while (isNaN(guess) || guess < 1 || guess > total_number || guess_check.includes(guess))
 

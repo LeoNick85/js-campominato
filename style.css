@@ -5,8 +5,9 @@
 }
 
 header {
+    height: 115px;
     padding: 30px;
-    background-color: green;
+    background-image: linear-gradient(to bottom right, azure , lightgreen);
     border-bottom: 4px solid darkgreen;
     text-align: center;
 }
@@ -17,6 +18,10 @@ header h1 {
     font-size: 40px;
 }
 
+#game-wrapper {
+    background-color: azure;
+}
+
 #game-wrapper::after {
     content: "";
     clear: both;
@@ -25,7 +30,7 @@ header h1 {
 
 aside {
     float: left;
-    height: 80vh;
+    height: calc(100vh - 115px);
     width: 20%;
     background-color: red;
     padding: 16px;
@@ -33,6 +38,37 @@ aside {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-family: 'Press Start 2P', cursive;
+    border: 4px solid darkred;
+}
+
+hr {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+#user-name {
+    color: orange;
+    text-decoration: underline;
+    text-align: center;
+    font-size: 24px;
+}
+
+#sidebar-stats {
+    padding: 16px;
+    text-align: center;
+    margin: 16px;
+    background-color: black;
+    border: 4px inset grey;
+    color: #99ff33;
+}
+
+#sidebar-stats h1 {
+    margin-bottom: 16px;
+}
+
+aside p {
+    margin-bottom: 16px;
 }
 
 #difficulty {
@@ -52,17 +88,11 @@ aside {
 #game-field li {
     float: left;
     width: 10%;
+    min-width: 110px;
     border: 2px solid black;
     padding: 16px;
     text-align: center;
     font-size: 35px;
-}
-
-#sidebar-stats {
-    text-align: center;
-    margin: 16px;
-    background-color: darkgrey;
-    border: 4px solid grey;
 }
 
 .fa-bomb {
