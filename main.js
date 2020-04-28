@@ -21,24 +21,22 @@ function getRandom(min, max) {
 function mineGenerator(num_mine, num_max) {
     var final_array = [];
 
-    for (i=0; i < num_mine; i++) {
-        var random_number = 0;
-        do {
-            var random_number = getRandom(1, num_max);
-        } while (final_array.includes(random_number))
-
-        final_array.push(random_number);
-    }
+    do {
+        var random_number = random_number = getRandom(1, num_max);
+        if (!final_array.includes(random_number)) {
+            final_array.push(random_number);
+        }
+    } while (final_array.length < num_mine && final_array.includes(random_number))
 
     return final_array;
 }
 
-//Funzione per verificare se un numero è immediatamente successivo o precedente a quelli di un array
+//Funzione per verificare se un numero è immediatamente successivo o precedente(o sotto o sopra a un altro numero se siamo in griglia da 10) a quelli di un array
 function isNextTo(number, confront) {
     var is_next = false;
 
     for (i = 0; i < confront.length && is_next == false; i++) {
-        if ((confront[i] + 1) == number || (confront[i] - 1) == number) {
+        if ((confront[i] + 1) == number || (confront[i] - 1) == number || (confront[i] - 10) == number || (confront[i] + 10) == number) {
             is_next = true;
         }
     }
